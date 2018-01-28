@@ -1,5 +1,5 @@
 FROM jenkins/jenkins:2.71-alpine
-
+RUN apk add docker
 ENV JENKINS_REF /usr/share/jenkins/ref
 
 # install jenkins plugins
@@ -17,4 +17,3 @@ COPY jenkins-home/userContent $JENKINS_REF/userContent
 COPY jenkins-home/jobs $JENKINS_REF/jobs/
 COPY jenkins-home/init.groovy.d $JENKINS_REF/init.groovy.d/
 COPY jenkins-home/dsl $JENKINS_REF/dsl/
-RUN apk add docker
