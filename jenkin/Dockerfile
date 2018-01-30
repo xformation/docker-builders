@@ -1,5 +1,10 @@
 FROM jenkins/jenkins:2.71-alpine
 RUN apk add docker
+RUN apk add --update mysql && rm -f /var/cache/apk/*
+RUN apk add --update make cmake gcc g++ gfortran
+RUN apk add --update python py-pip python-dev
+RUN pip install sceptre
+RUN pip install tropsphere
 ENV JENKINS_REF /usr/share/jenkins/ref
 
 # install jenkins plugins
