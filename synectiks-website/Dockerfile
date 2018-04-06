@@ -60,10 +60,10 @@ RUN GIT_URL="https://github.com/synectiks-sddc/synectiks-website/archive/master.
     DIR_TOCOPY="/var/www/localhost/htdocs/"; \
     cd $DIR_TOCOPY; \
     wget --no-check-certificate -O master.zip $GIT_URL; \
-    unzip $DIR_TOCOPY/master.zip; \
+    unzip -j $DIR_TOCOPY/master.zip -d .; \
     echo; echo; echo "List (13) $DIR_TOCOPY ..."; echo; ls -AlhF $DIR_TOCOPY; du -sh; echo; \
     rm $DIR_TOCOPY/master.zip; \
-    echo; echo; echo "List (14) $DIR_TOCOPY ..."; echo; ls -AlhF $DIR_TOCOPY; du -sh; echo; \
+    echo; echo; echo "List (14) $DIR_TOCOPY ..."; echo; ls -AlhF $DIR_TOCOPY; du -sh; echo; 
 
 COPY entry.sh /entry.sh
 
