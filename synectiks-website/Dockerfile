@@ -55,7 +55,7 @@ RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \
     echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php7/conf.d/xdebug.ini
 
 # Configure website files from github
-RUN GIT_URL="https://github.com/firepress-org/$THEME_NAME_FROM/archive/master.zip"; \
+RUN GIT_URL="https://github.com/synectiks-sddc/synectiks-website/archive/master.zip"; \
     DIR_TOCOPY="/var/www/localhost/htdocs/"; \
     cd $DIR_TOCOPY; \
     wget --no-check-certificate -O master.zip $GIT_URL; \
