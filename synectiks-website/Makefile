@@ -12,7 +12,7 @@ all: run
 # registry = 657907747545.dkr.ecr.us-east-1.amazonaws.com
 # version ?= latest
 
-image: binary
+image: 
 	$(call blue, "Building docker image...")
 	docker build -t ${IMAGE_NAME}:${VERSION} .
 	$(MAKE) clean
