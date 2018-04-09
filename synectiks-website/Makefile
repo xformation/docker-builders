@@ -14,7 +14,7 @@ all: run
 
 image: 
 	$(call blue, "Building docker image...")
-	docker build -t ${IMAGE_NAME}:${VERSION} .
+	docker build --no-cache -t ${IMAGE_NAME}:${VERSION} .
 	$(MAKE) clean
 
 run: image
