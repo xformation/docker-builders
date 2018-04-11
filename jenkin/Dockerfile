@@ -1,6 +1,5 @@
 FROM jenkins/jenkins:2.71-alpine
 USER root
-USER root
 RUN apk update && apk upgrade
 RUN apk add docker
 RUN apk add --update mysql && rm -f /var/cache/apk/*
