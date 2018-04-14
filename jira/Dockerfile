@@ -15,6 +15,7 @@ RUN wget -O - \
 
 WORKDIR /opt/jira
 VOLUME ["/opt/jira-home"]
+EXPOSE 8080
 ADD setup-jira-db.sh /opt/jira/setup-jira-db.sh
 ENV JVM_SUPPORT_RECOMMENDED_ARGS -Datlassian.plugins.enable.wait=300
 ADD launch.sh /launch
