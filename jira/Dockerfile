@@ -3,7 +3,7 @@ FROM relateiq/oracle-java8
 ENV JIRA_VERSION 7.5.1
 ENV JIRA_HOME /opt/jira-home
 ENV HOME /opt/jira-home
-
+RUN apt-get update && apt-get install -y postgresql postgresql-contrib
 RUN mkdir /opt/jira && \
     mkdir /opt/jira-home
 RUN wget -O - \
@@ -17,6 +17,8 @@ WORKDIR /opt/jira
 VOLUME ["/opt/jira-home"]
 EXPOSE 8080
 ADD setup-jira-db.sh /opt/jira/setup-jira-db.sh
+RUN chmod u+x /opt/jira/setup-jira-db.sh
 ENV JVM_SUPPORT_RECOMMENDED_ARGS -Datlassian.plugins.enable.wait=300
 ADD launch.sh /launch
+RUN chmod u+x /launch
 CMD ["/launch"]

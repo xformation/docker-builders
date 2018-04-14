@@ -27,4 +27,4 @@ cat <<END > /opt/jira-home/dbconfig.xml
   </jdbc-datasource>
 </jira-database-config>
 END
-/opt/jira/bin/catalina.sh -fg
+/opt/jira/bin/catalina.sh run
