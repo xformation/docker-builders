@@ -14,8 +14,8 @@ RUN wget -O - \
       https://jdbc.postgresql.org/download/postgresql-42.2.2.jar
 ADD jars/atlassian-extras-3.2.jar atlassian-extras-3.2.jar
 ADD jars/atlassian-universal-plugin-manager-plugin-2.22.4.jar atlassian-universal-plugin-manager-plugin-2.22.4.jar
-RUN cp -v jars/atlassian-extras-3.2.jar /opt/jira/atlassian-jira/WEB-INF/lib/ && \
-    cp -v jars/atlassian-universal-plugin-manager-plugin-2.22.4.jar /opt/jira/atlassian-jira/WEB-INF/atlassian-bundled-plugins/
+RUN cp -v atlassian-extras-3.2.jar /opt/jira/atlassian-jira/WEB-INF/lib/ && \
+    cp -v atlassian-universal-plugin-manager-plugin-2.22.4.jar /opt/jira/atlassian-jira/WEB-INF/atlassian-bundled-plugins/
 WORKDIR /opt/jira
 VOLUME ["/opt/jira-home"]
 EXPOSE 8080
