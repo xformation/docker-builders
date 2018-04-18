@@ -12,6 +12,8 @@ RUN wget -O - \
     && perl -i -p -e 's/^JVM_SUPPORT/#JVM_SUPPORT/' /opt/jira/bin/setenv.sh \
     && wget -O /opt/jira/lib/postgresql-42.2.2.jar \
       https://jdbc.postgresql.org/download/postgresql-42.2.2.jar
+ADD jars/atlassian-extras-3.2.jar atlassian-extras-3.2.jar
+ADD jars/atlassian-universal-plugin-manager-plugin-2.22.4.jar atlassian-universal-plugin-manager-plugin-2.22.4.jar
 RUN cp -v jars/atlassian-extras-3.2.jar /opt/jira/atlassian-jira/WEB-INF/lib/ && \
     cp -v jars/atlassian-universal-plugin-manager-plugin-2.22.4.jar /opt/jira/atlassian-jira/WEB-INF/atlassian-bundled-plugins/
 WORKDIR /opt/jira
