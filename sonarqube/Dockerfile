@@ -39,6 +39,6 @@ RUN set -x \
 VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
-#COPY run.sh $SONARQUBE_HOME/bin/
-COPY  https://s3.amazonaws.com/cf-templates-5yenrh0lqxp5-us-east-1/run.sh $SONARQUBE_HOME/bin/
+COPY run.sh $SONARQUBE_HOME/bin/
+#COPY  https://s3.amazonaws.com/cf-templates-5yenrh0lqxp5-us-east-1/run.sh $SONARQUBE_HOME/bin/
 ENTRYPOINT ["./bin/run.sh"]
