@@ -31,4 +31,3 @@ clean:
 
 define blue
 	@echo $1
-endef
