@@ -40,5 +40,6 @@ VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
+RUN chmod u+x $SONARQUBE_HOME/bin/run.sh
 #COPY  https://s3.amazonaws.com/cf-templates-5yenrh0lqxp5-us-east-1/run.sh $SONARQUBE_HOME/bin/
-ENTRYPOINT ["./bin/run.sh"]
+ENTRYPOINT ["/opt/sonarqube/bin/run.sh"]
