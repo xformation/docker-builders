@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "******CREATING JIRA DATABASE******"
+echo "******CREATING SONAR DATABASE******"
 PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres <<- EOSQL
    CREATE USER sonar WITH PASSWORD 'sonar';
    CREATE DATABASE jira WITH ENCODING 'UNICODE' LC_COLLATE 'C' LC_CTYPE 'C' \
@@ -8,4 +8,3 @@ PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres <<- EOSQL
 EOSQL
 
 echo "******SONAR DATABASE CREATED******"
-#psql -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = 'my_db'" | grep -q 1 || psql -U postgres -c "CREATE DATABASE my_db"
