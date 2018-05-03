@@ -39,7 +39,11 @@ RUN set -x \
 VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
+ADD setup-sonar-db.sh /opt/sonarqube/setup-sonar-db.sh
+RUN chmod u+x /opt/sonarqube/setup-sonar-db.sh
 COPY run.sh $SONARQUBE_HOME/bin/
+COPY sonar.properties $SONARQUBE_HOME/conf/
 RUN chmod u+x $SONARQUBE_HOME/bin/run.sh
-#COPY  https://s3.amazonaws.com/cf-templates-5yenrh0lqxp5-us-east-1/run.sh $SONARQUBE_HOME/bin/
-ENTRYPOINT ["/opt/sonarqube/bin/run.sh"]
+ADD launch.sh /launch
+RUN chmod u+x /launch
+CMD ["/launch"]
