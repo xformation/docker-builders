@@ -1,5 +1,4 @@
 FROM openjdk:8-alpine
-RUN apt-get update && apt-get install -y postgresql postgresql-contrib
 RUN apk update && apk upgrade
 RUN apk add --update postgresql postgresql-contrib
 ENV SONAR_VERSION=6.7.3 \
