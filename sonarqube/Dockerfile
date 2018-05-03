@@ -1,12 +1,14 @@
 FROM openjdk:8-alpine
-
+RUN apt-get update && apt-get install -y postgresql postgresql-contrib
+RUN apk update && apk upgrade
+RUN apk add --update postgresql postgresql-contrib
 ENV SONAR_VERSION=6.7.3 \
-    SONARQUBE_HOME=/opt/sonarqube \
+    SONARQUBE_HOME=/opt/sonarqube 
     # Database configuration
     # Defaults to using H2
-    SONARQUBE_JDBC_USERNAME=sonar \
-    SONARQUBE_JDBC_PASSWORD=sonar \
-    SONARQUBE_JDBC_URL=
+    #SONARQUBE_JDBC_USERNAME=sonar \
+    #SONARQUBE_JDBC_PASSWORD=sonar \
+    #SONARQUBE_JDBC_URL=
 
 # Http port
 EXPOSE 9000
