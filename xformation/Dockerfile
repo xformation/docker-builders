@@ -13,7 +13,7 @@ ENV PATH=/usr/share/xformation/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
     XF_PATHS_PROVISIONING="/etc/xformation/provisioning"
 
 RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certificates && \
-    mkdir -p "$GF_PATHS_HOME/.aws" && \
+    mkdir -p "$XF_PATHS_HOME/.aws" && \
     curl "$XFORMATION_URL" | tar xfvz - --strip-components=1 -C "$XF_PATHS_HOME" && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
