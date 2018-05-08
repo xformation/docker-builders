@@ -19,7 +19,7 @@ image:
 
 run: image
 	$(call blue, "Running Docker image locally...")
-	docker run -i -t --rm -p 8080:8080 ${IMAGE_NAME}:${VERSION} 
+	docker run -i -t --rm -p 8060:8060 ${IMAGE_NAME}:${VERSION}
 
 publish:  
 	$(call blue, "Publishing Docker image to registry...")
