@@ -11,8 +11,7 @@ ENV PATH=/usr/share/xformation/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
     XF_PATHS_LOGS="/var/log/xformation" \
     XF_PATHS_PLUGINS="/var/lib/xformation/plugins" \
     XF_PATHS_PROVISIONING="/etc/xformation/provisioning"
-
-RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certificates && \
+RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certificates postgresql postgresql-contrib && \
     mkdir -p "$XF_PATHS_HOME/.aws" && \
     curl "$XFORMATION_URL" | tar xfvz - --strip-components=1 -C "$XF_PATHS_HOME" && \
     apt-get autoremove -y && \
