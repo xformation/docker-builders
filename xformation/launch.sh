@@ -1,4 +1,4 @@
 #!/bin/bash
 set -o errexit
-/opt/jira/setup-jira-db.sh
+/setup-xformation-db.sh
 /run.sh
