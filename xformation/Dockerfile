@@ -34,9 +34,9 @@ EXPOSE 3000
 COPY ./setup-xformation-db.sh /setup-xformation-db.sh
 COPY ./run.sh /run.sh
 COPY ./launch.sh /launch.sh
-RUN chmod u+x /setup-xformation-db.sh
-RUN chmod u+x /run.sh
-RUN chmod u+x /launch.sh
+RUN chmod 777 /setup-xformation-db.sh
+RUN chmod 777 /run.sh
+RUN chmod 777 /launch.sh
 USER xformation
 WORKDIR /
 ENTRYPOINT [ "/launch.sh" ]
