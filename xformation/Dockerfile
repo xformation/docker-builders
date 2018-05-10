@@ -31,8 +31,10 @@ RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certifica
 
 EXPOSE 3000
 
+COPY ./setup-xformation-db.sh /setup-xformation-db.sh
 COPY ./run.sh /run.sh
-
+COPY ./launch.sh /launch.sh
+RUN chmod u+x /launch.sh
 USER xformation
 WORKDIR /
-ENTRYPOINT [ "/run.sh" ]
+ENTRYPOINT [ "/launch.sh" ]
