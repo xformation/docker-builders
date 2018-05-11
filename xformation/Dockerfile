@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certifica
              "$XF_PATHS_DATA" && \
     cp "$XF_PATHS_HOME/conf/defaults.ini" "$XF_PATHS_CONFIG" && \
     cp "$XF_PATHS_HOME/conf/ldap.toml" /etc/xformation/ldap.toml && \
-    chown -R xformation:xformation "XF_PATHS_HOME" "$XF_PATHS_DATA" "$XF_PATHS_HOME/.aws" "$XF_PATHS_LOGS" "$XF_PATHS_PLUGINS" && \
+    chown -R xformation:xformation "$XF_PATHS_HOME" "$XF_PATHS_DATA" "$XF_PATHS_HOME/.aws" "$XF_PATHS_LOGS" "$XF_PATHS_PLUGINS" && \
     chmod 777 "$XF_PATHS_DATA" "$XF_PATHS_HOME/.aws" "$XF_PATHS_LOGS" "$XF_PATHS_PLUGINS"
 
 EXPOSE 3000
