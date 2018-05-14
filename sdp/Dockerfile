@@ -11,7 +11,7 @@ ENV PATH=/usr/share/sdp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s
     SDP_PATHS_LOGS="/var/log/sdp" \
     SDP_PATHS_PLUGINS="/var/lib/sdp/plugins" \
     SDP_PATHS_PROVISIONING="/etc/sdp/provisioning"
-RUN apt-get update && apt-get install -y postgresql-client 
+RUN apt-get update && apt-get install -y postgresql-client npm
 RUN npm install -g json-server
 RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certificates && \
     mkdir -p "$SDP_PATHS_HOME/.aws" && \
