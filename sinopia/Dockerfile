@@ -9,7 +9,7 @@ RUN chown -R sinopia:sinopia /opt/sinopia
 USER sinopia
 ADD /config.yaml /tmp/config.yaml
 ADD /start.sh /opt/sinopia/start.sh
-CMD chmod +x /opt/sinopia/start.sh
+RUN chmod +x /opt/sinopia/start.sh
 CMD ["/opt/sinopia/start.sh"]
 EXPOSE 4873
 VOLUME /opt/sinopia
