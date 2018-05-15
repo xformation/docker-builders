@@ -14,17 +14,17 @@ all: run
 
 image: 
 	$(call blue, "Building docker image...")
-	docker build --no-cache -t ${IMAGE_NAME}:${VERSION} .
+	docker build --no-cache -t ${TEST_IMAGE_NAME}:${VERSION} .
 	$(MAKE) clean
 
 run: image
 	$(call blue, "Running Docker image locally...")
-	docker run -i -t --rm -p 8080:8080 ${IMAGE_NAME}:${VERSION} 
+	docker run -i -t --rm -p 8080:8080 ${TEST_IMAGE_NAME}:${VERSION} 
 
 publish:  
 	$(call blue, "Publishing Docker image to registry...")
-	docker tag ${IMAGE_NAME}:latest ${REGISTRY}/${IMAGE_NAME}:${VERSION}
-	docker push ${REGISTRY}/${IMAGE_NAME}:${VERSION}
+	docker tag ${TEST_IMAGE_NAME}:latest ${REGISTRY}/${TEST_IMAGE_NAME}:${VERSION}
+	docker push ${REGISTRY}/${TEST_IMAGE_NAME}:${VERSION}
 
 clean: 
 	@rm -f app 
