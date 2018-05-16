@@ -14,7 +14,7 @@ ENV PATH=/usr/share/sdp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s
 RUN apt-get update && apt-get install -y postgresql-client 
 RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certificates && \
     mkdir -p "$SDP_PATHS_HOME/.aws" && \
-    curl "$SDP_URL" | tar SDPvz - --strip-components=1 -C "$SDP_PATHS_HOME" && \
+    curl "$SDP_URL" | tar xfvz - --strip-components=1 -C "$SDP_PATHS_HOME" && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd -r -g $SDP_GID sdp && \
