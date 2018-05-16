@@ -4,10 +4,10 @@ args="$@"
 
 args="$@ -p 80"
 
-file=/data/db.json
+file=/data/data.json
 if [ -f $file ]; then
-    echo "Found db.json, trying to open"
-    args="$args db.json"
+    echo "Found data.json, trying to open"
+    args="$args data.json"
 fi
 
 file=/data/file.js
