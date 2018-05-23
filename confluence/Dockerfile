@@ -3,7 +3,7 @@ FROM relateiq/oracle-java8
 ENV CONFLUENCE_VERSION 5.8.6
 ENV CONFLUENCE_HOME /opt/confluence-home
 ENV HOME /opt/confluence-home
-
+RUN apt-get update && apt-get install -y postgresql-client postgresql-contrib
 RUN mkdir /opt/confluence && \
     mkdir /opt/confluence-home
 RUN wget -O - \
