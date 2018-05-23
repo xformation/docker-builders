@@ -4,7 +4,7 @@ set -o errexit
 cat <<END > /opt/confluence-home/confluence.cfg.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <confluence-configuration>
-  <setupStep>setupusermanagementchoice-start</setupStep>
+  <setupStep>complete</setupStep>
   <setupType>custom</setupType>
   <buildNumber>5984</buildNumber>
   <properties>
