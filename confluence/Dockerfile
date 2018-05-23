@@ -20,4 +20,5 @@ ADD launch.sh /launch
 RUN chmod u+x /launch
 WORKDIR /opt/confluence
 VOLUME ["/opt/confluence-home"]
+EXPOSE 8090
 CMD ["/launch"]
