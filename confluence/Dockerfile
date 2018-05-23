@@ -18,6 +18,7 @@ ADD setup-confluence-db.sh /opt/confluence/setup-confluence-db.sh
 RUN chmod u+x /opt/confluence/setup-confluence-db.sh
 ADD launch.sh /launch
 RUN chmod u+x /launch
+ADD data.sql /data.sql
 WORKDIR /opt/confluence
 VOLUME ["/opt/confluence-home"]
 EXPOSE 8090
