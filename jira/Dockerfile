@@ -3,7 +3,7 @@ FROM relateiq/oracle-java8
 ENV JIRA_VERSION 7.5.1
 ENV JIRA_HOME /opt/jira-home
 ENV HOME /opt/jira-home
-RUN apt-get update && apt-get install -y postgresql postgresql-contrib
+RUN apt-get update && apt-get install -y postgresql-client postgresql-contrib
 RUN mkdir /opt/jira && \
     mkdir /opt/jira-home
 RUN wget -O - \
