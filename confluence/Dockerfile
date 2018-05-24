@@ -13,7 +13,9 @@ RUN wget -O - \
     && perl -i -p -e 's/-Xmx2048m/-Xmx512m/' /opt/confluence/bin/setenv.sh \
     && perl -i -p -e 's/_%T//' /opt/confluence/bin/setenv.sh \
     && echo "confluence.home = ${CONFLUENCE_HOME}" > \
-        /opt/confluence/confluence/WEB-INF/classes/confluence-init.properties
+        /opt/confluence/confluence/WEB-INF/classes/confluence-init.properties \
+        && rm -f  /opt/confluence/confluence/WEB-INF/lib/postgresql-9.2-1002.jdbc4.jar
+ADD postgresql-42.2.2.jar /opt/confluence/lib/postgresql-42.2.2.jar
 ADD setup-confluence-db.sh /opt/confluence/setup-confluence-db.sh
 RUN chmod u+x /opt/confluence/setup-confluence-db.sh
 ADD launch.sh /launch
