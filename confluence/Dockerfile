@@ -15,10 +15,10 @@ RUN wget -O - \
     && echo "confluence.home = ${CONFLUENCE_HOME}" > \
         /opt/confluence/confluence/WEB-INF/classes/confluence-init.properties \
         && rm -f  /opt/confluence/confluence/WEB-INF/lib/postgresql-9.2-1002.jdbc4.jar
-ADD jars/atlassian-extras-decoder-v2-3.2 atlassian-extras-decoder-v2-3.2
-ADD jars/atlassian-universal-plugin-manager-plugin-2.18.4 atlassian-universal-plugin-manager-plugin-2.18.4
-RUN cp -v atlassian-universal-plugin-manager-plugin-2.18.4 opt/atlassian-confluence-5.8.6/confluence/WEB-INF/atlassian-bundled-plugins/ && \
-    cp -v atlassian-extras-decoder-v2-3.2 /opt/atlassian-confluence-5.8.6/confluence/WEB-INF/lib/        
+ADD jars/atlassian-extras-decoder-v2-3.2.jar atlassian-extras-decoder-v2-3.2.jar
+ADD jars/atlassian-universal-plugin-manager-plugin-2.18.4.jar atlassian-universal-plugin-manager-plugin-2.18.4.jar
+RUN cp -v atlassian-universal-plugin-manager-plugin-2.18.4.jar opt/atlassian-confluence-5.8.6/confluence/WEB-INF/atlassian-bundled-plugins/ && \
+    cp -v atlassian-extras-decoder-v2-3.2.jar /opt/atlassian-confluence-5.8.6/confluence/WEB-INF/lib/        
 ADD postgresql-42.2.2.jar /opt/confluence/lib/postgresql-42.2.2.jar 
 ADD setup-confluence-db.sh /opt/confluence/setup-confluence-db.sh
 RUN chmod u+x /opt/confluence/setup-confluence-db.sh
