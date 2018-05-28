@@ -69,7 +69,7 @@ private String getPrivateIP() {
 }
 
 private String getInstanceUrl() {
-    "https://jenkin.xformation.com/"
+    "https://ci.xformation.com/"
 }
 
 private String queryJenkinsURL() {
