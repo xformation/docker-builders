@@ -69,12 +69,13 @@ private String getPrivateIP() {
 }
 
 private String getInstanceUrl() {
-    "https://ci.xformation.com/"
+    "https://ci.synectiks.com/"
 }
 
 private String queryJenkinsURL() {
     //assume default port 80
-    "http://${queryElbDNSName()}/"
+    "https://ci.synectiks.com/"
+    //"http://${queryElbDNSName()}/"
 }
 
 
