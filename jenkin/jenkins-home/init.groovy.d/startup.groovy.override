@@ -1,17 +1,16 @@
 import com.amazonaws.ClientConfiguration
 import com.amazonaws.regions.RegionUtils
 import com.amazonaws.services.ecs.AmazonECSClient
+import com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancingClient
+import com.amazonaws.services.elasticloadbalancing.model.DescribeLoadBalancersRequest
+import com.amazonaws.services.elasticloadbalancing.model.DescribeLoadBalancersResult
 import com.amazonaws.util.EC2MetadataUtils
-import com.amazonaws.services.elasticloadbalancing.*
-import com.amazonaws.services.elasticloadbalancing.model.*
 import com.cloudbees.jenkins.plugins.amazonecs.ECSCloud
 import com.cloudbees.jenkins.plugins.amazonecs.ECSTaskTemplate
-import hudson.model.*
-import hudson.plugins.gradle.*
-import hudson.tools.*
-import jenkins.model.*
-import jenkins.model.Jenkins
-import jenkins.model.JenkinsLocationConfiguration
+import hudson.model.Cause
+import hudson.model.CauseAction
+import hudson.model.ParametersAction
+import hudson.model.StringParameterValue
 
 import java.util.logging.Logger
 
@@ -60,7 +59,7 @@ private String queryElbDNSName() {
     AmazonElasticLoadBalancingClient client = new AmazonElasticLoadBalancingClient(clientConfiguration);
     client.setRegion(RegionUtils.getRegion(region))
     DescribeLoadBalancersRequest request = new DescribeLoadBalancersRequest()
-            .withLoadBalancerNames('jenkins-elb');
+            .withLoadBalancerNames('appcluster-dev-alb');
     DescribeLoadBalancersResult result = client.describeLoadBalancers(request);
     result.loadBalancerDescriptions.first().DNSName
 }
@@ -70,7 +69,7 @@ private String getPrivateIP() {
 }
 
 private String getInstanceUrl() {
-    "http://${privateIP}:8080/"
+    "https://jenkin.xformation.com/"
 }
 
 private String queryJenkinsURL() {
@@ -86,7 +85,7 @@ private String getRegion() {
 private String queryJenkinsClusterArn(String regionName) {
     AmazonECSClient client = new AmazonECSClient(clientConfiguration)
     client.setRegion(RegionUtils.getRegion(regionName))
-    client.listClusters().getClusterArns().find { it.endsWith('jenkins-cluster') }
+    client.listClusters().getClusterArns().find { it.endsWith('appcluster-dev-cluster') }
 }
 
 private void configureCloud() {
@@ -127,7 +126,7 @@ private ECSTaskTemplate createECSTaskTemplate(String label, String image, int so
             image = image,
             remoteFSRoot = "/home/jenkins",
             //memory reserved
-            memory = 0,
+            memory = 10000,
             //soft memory
             memoryReservation = softMemory,
             cpu = cpu,
