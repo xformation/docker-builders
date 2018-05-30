@@ -1,5 +1,5 @@
 
-def numberOfCopies = getEnvProperty('NumberOfCopies', '1').toInteger()
+def numberOfCopies = getEnvProperty('NumberOfCopies', '5').toInteger()
 def generatedJobs = new java.util.LinkedList<String>()
 
 (1..numberOfCopies).each{ i->
