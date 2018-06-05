@@ -9,7 +9,7 @@ cat <<END > /opt/jira-home/dbconfig.xml
   <database-type>postgres72</database-type>
   <schema-name>public</schema-name>
   <jdbc-datasource>
-    <url>${DB_JDBC_URL}/jira</url>
+    <url>${DB_JDBC_URL}/jiratest</url>
     <driver-class>org.postgresql.Driver</driver-class>
     <username>${DB_USER}</username>
     <password>${DB_PASSWORD}</password>
