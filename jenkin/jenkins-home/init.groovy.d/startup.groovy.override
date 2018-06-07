@@ -126,17 +126,24 @@ private ECSTaskTemplate createECSTaskTemplate(String label, String image, int so
     new ECSTaskTemplate(
             templateName = label,
             label = label,
+            taskDefinitionOverride = null,
             image = image,
+            launchType = ec2,
             remoteFSRoot = "/home/jenkins",
             //memory reserved
             memory = 10000,
             //soft memory
             memoryReservation = softMemory,
             cpu = cpu,
+            subnets = null,
+            securityGroups = null,
+            assignPublicIp = false,
             privileged = false,
+            containerUser = null,
             logDriverOptions = null,
             environments = null,
             extraHosts = null,
-            mountPoints = null
+            mountPoints = null,
+            portMappings = null
     )
 }
