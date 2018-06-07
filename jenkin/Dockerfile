@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.71-alpine
+FROM jenkins/jenkins:2.107.3-alpine
 USER root
 RUN apk update && apk upgrade
 RUN apk add docker
