@@ -128,7 +128,7 @@ private ECSTaskTemplate createECSTaskTemplate(String label, String image, int so
             label = label,
             taskDefinitionOverride = null,
             image = image,
-            launchType = ec2,
+            launchType = "EC2",
             remoteFSRoot = "/home/jenkins",
             //memory reserved
             memory = 10000,
