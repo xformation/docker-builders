@@ -13,6 +13,8 @@ import hudson.model.ParametersAction
 import hudson.model.StringParameterValue
 import jenkins.model.JenkinsLocationConfiguration
 import java.util.logging.Logger
+import jenkins.model.*
+import jenkins.model.Jenkins
 
 Logger.global.info("[Running] startup script")
 
