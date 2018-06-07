@@ -11,7 +11,7 @@ import hudson.model.Cause
 import hudson.model.CauseAction
 import hudson.model.ParametersAction
 import hudson.model.StringParameterValue
-
+import jenkins.model.JenkinsLocationConfiguration
 import java.util.logging.Logger
 
 Logger.global.info("[Running] startup script")
