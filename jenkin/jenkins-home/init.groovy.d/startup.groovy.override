@@ -71,7 +71,7 @@ private String getPrivateIP() {
 }
 
 private String getInstanceUrl() {
-    "https://ci.synectiks.com/"
+    "http://${privateIP}:8080/"
 }
 
 private String queryJenkinsURL() {
