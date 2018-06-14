@@ -15,7 +15,8 @@ all: run
 binary:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
 	echo "${mvnHome}"
-	C:/maven/bin/mvn clean package
+	cd C:/maven/bin
+	mvn clean package
 
 test:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
