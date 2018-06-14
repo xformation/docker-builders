@@ -15,13 +15,29 @@ all: run
 binary:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
 	echo "${mvnHome}"
-	${mvnHome}/bin/mvn clean package -DskipTests=true
+	${mvnHome}/bin/mvn clean package
 
 test:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
 	echo "${mvnHome}"
 	${mvnHome}/bin/mvn surefire-report:report
 
+image: binary
+	$(call blue, "Building docker image...")
+	docker build -t ${IMAGE_NAME}:${VERSION} .
+	$(MAKE) clean
+
+run: image
+	$(call blue, "Running Docker image locally...")
+	docker run -i -t --rm -p 8001:8001 ${IMAGE_NAME}:${VERSION} 
+
+publish:  
+	$(call blue, "Publishing Docker image to registry...")
+	docker tag ${IMAGE_NAME}:latest ${REGISTRY}/${IMAGE_NAME}:${VERSION}
+	docker push ${REGISTRY}/${IMAGE_NAME}:${VERSION}
+
+clean: 
+	@rm -f app 
 
 define blue
 	@echo $1
