@@ -8,4 +8,4 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-
 VOLUME /opt/data
 ADD eskaysoftAPI.jar eskaysoftAPI.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","eskaysoftAPI-0.0.1-SNAPSHOT-1.0.jar"]
+ENTRYPOINT ["java","-jar","eskaysoftAPI.jar"]
