@@ -15,12 +15,12 @@ all: run
 binary:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
 	echo "${mvnHome}"
-	${mvnHome}/bin/mvn clean package
+	C:/maven/bin/mvn clean package
 
 test:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
 	echo "${mvnHome}"
-	${mvnHome}/bin/mvn surefire-report:report
+	C:/maven/bin/mvn surefire-report:report
 
 image: binary
 	$(call blue, "Building docker image...")
