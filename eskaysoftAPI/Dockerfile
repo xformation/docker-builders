@@ -6,6 +6,6 @@ RUN apk add python curl jq
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py && \
     pip install awscli
 VOLUME /opt/data
-ADD eskaysoftAPI-0.0.1-SNAPSHOT.jar eskaysoftAPI-0.0.1-SNAPSHOT-1.0.jar
+ADD eskaysoftAPI.jar eskaysoftAPI.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","eskaysoftAPI-0.0.1-SNAPSHOT-1.0.jar"]
