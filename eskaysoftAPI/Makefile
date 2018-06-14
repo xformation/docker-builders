@@ -15,8 +15,7 @@ all: run
 binary:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
 	echo "${mvnHome}"
-	${mvnHome}/bin/mvn clean package -DskipTests=true
-
+	${mvnHome}/bin/mvn clean install 
 test:
 	$(call blue, "Building Java Jar binary ready for containerisation...")
 	echo "${mvnHome}"
