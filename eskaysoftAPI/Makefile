@@ -22,7 +22,7 @@ test:
 	echo "${mvnHome}"
 	C:/maven/bin/mvn surefire-report:report
 
-image: binary
+image: 
 	$(call blue, "Building docker image...")
 	docker build -t ${IMAGE_NAME}:${VERSION} .
 	$(MAKE) clean
