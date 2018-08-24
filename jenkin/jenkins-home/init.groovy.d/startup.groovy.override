@@ -88,7 +88,7 @@ private String getRegion() {
 private String queryJenkinsClusterArn(String regionName) {
     AmazonECSClient client = new AmazonECSClient(clientConfiguration)
     client.setRegion(RegionUtils.getRegion(regionName))
-    client.listClusters().getClusterArns().find { it.endsWith('appcluster-dev-cluster') }
+    client.listClusters().getClusterArns().find { it.endsWith('vdmscluster-ops-cluster') }
 }
 
 private void configureCloud() {
