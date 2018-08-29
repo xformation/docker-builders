@@ -27,5 +27,5 @@ ADD tenant.sql /tenant.sql
 ADD olap.sql /olap.sql
 # RUN chmod u+x /opt/erp/start.sh
 EXPOSE 8080 8443 8983
-CMD ["sh", "./start.sh"]
-# CMD ["/launch"]
+# CMD ["sh", "./start.sh"]
+CMD ["/launch"]
