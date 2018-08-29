@@ -16,7 +16,8 @@ RUN set -x \
 	&& wget -O erp.tar.gz "$ERP_TGZ_URL" \
 	&& tar -xvf erp.tar.gz --strip-components=1 \
 	&& find . -type f -print0 | xargs -0 dos2unix \
-	&& rm erp.tar.gz* 
+	&& rm erp.tar.gz* \
+	&& sh ant clean build
 ADD setup-erp-db.sh /opt/erp/setup-erp-db.sh
 RUN chmod u+x /opt/erp/setup-erp-db.sh
 ADD launch.sh /launch
