@@ -16,7 +16,8 @@ RUN set -x \
 	&& wget -O erp.tar.gz "$ERP_TGZ_URL" \
 	&& tar -xvf erp.tar.gz --strip-components=1 \
 	&& find . -type f -print0 | xargs -0 dos2unix \
-	&& rm erp.tar.gz* 
+	&& rm erp.tar.gz* \
+	&& ls -a
 ADD setup-erp-db.sh /opt/erp/setup-erp-db.sh
 RUN chmod u+x /opt/erp/setup-erp-db.sh
 ADD launch.sh /launch
@@ -24,5 +25,6 @@ RUN chmod u+x /launch
 ADD dump.sql /dump.sql
 ADD tenant.sql /tenant.sql
 ADD olap.sql /olap.sql
+RUN chmod u+x /opt/erp/start.sh
 EXPOSE 8080 8443 8983
 CMD ["/launch"]
