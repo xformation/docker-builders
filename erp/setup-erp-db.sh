@@ -13,10 +13,24 @@ PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres <<- EOSQL
    GRANT ALL PRIVILEGES ON DATABASE ofbiz to ofbiz;
 EOSQL
 echo "******ERP DATABASE CREATED******"
-if [ -r '/data.sql' ]; then
-    echo "**IMPORTING ERP DATABASE BACKUP**"
+if [ -r '/dump.sql' ]; then
+    echo "**IMPORTING ERP ofbiz DATABASE BACKUP**"
     SERVER=$!; sleep 2
-    PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres confluence < /data.sql
+    PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres ofbiz < /dump.sql
     kill $SERVER; wait $SERVER
-    echo "**ERP DATABASE BACKUP IMPORTED***"
+    echo "**ERP OFBIZ DATABASE BACKUP IMPORTED***"
+fi
+if [ -r '/tenant.sql' ]; then
+    echo "**IMPORTING ERP ofbiz tenant DATABASE BACKUP**"
+    SERVER=$!; sleep 2
+    PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres ofbiztenant < /tenant.sql
+    kill $SERVER; wait $SERVER
+    echo "**ERP OFBIZ TENANT DATABASE BACKUP IMPORTED***"
+fi
+if [ -r '/olap.sql' ]; then
+    echo "**IMPORTING ERP ofbiz OLAP DATABASE BACKUP**"
+    SERVER=$!; sleep 2
+    PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres ofbizolap < /olap.sql
+    kill $SERVER; wait $SERVER
+    echo "**ERP OFBIZ OLAP DATABASE BACKUP IMPORTED***"
 fi
