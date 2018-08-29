@@ -5,6 +5,8 @@ ENV ERP_TGZ_URL https://s3.amazonaws.com/sdp-releases/v$ERP_VERSION.tar.gz
 ENV ERP_HOME /opt/erp
 ENV PATH $ERP_HOME/bin:$PATH
 RUN mkdir -p "$ERP_HOME"
+RUN apk update && apk upgrade
+RUN apk add postgresql-client postgresql-contrib
 WORKDIR $ERP_HOME
 ADD setup-erp-db.sh ./setup-erp-db.sh
 RUN chmod u+x ./setup-erp-db.sh
