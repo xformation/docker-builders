@@ -25,5 +25,5 @@ RUN set -x \
 	&& sh ant build
 # RUN chmod u+x /opt/erp/start.sh
 EXPOSE 8080 8443 8983
-# CMD ["sh", "./start.sh"]
-CMD ["./launch.sh"]
+CMD ["sh", "./launch.sh"]
+# CMD ["./launch.sh"]
