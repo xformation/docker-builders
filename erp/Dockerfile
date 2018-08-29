@@ -1,7 +1,7 @@
 FROM java:8-jdk-alpine
 
 ENV ERP_VERSION 1.0.0
-ENV ERP_TGZ_URL https://github.com/ilscipio/scipio-erp/archive/v$ERP_VERSION.tar.gz
+ENV ERP_TGZ_URL https://s3.amazonaws.com/sdp-releases/v$ERP_VERSION.tar.gz
 ENV ERP_HOME /opt/erp
 
 ENV PATH $ERP_HOME/bin:$PATH
