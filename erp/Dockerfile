@@ -3,6 +3,7 @@ FROM java:8-jdk-alpine
 ENV ERP_VERSION 1.0.0
 ENV ERP_TGZ_URL https://s3.amazonaws.com/sdp-releases/v$ERP_VERSION.tar.gz
 ENV ERP_HOME /opt/erp
+ENV DB_HOST 100.64.3.25
 
 ENV PATH $ERP_HOME/bin:$PATH
 RUN mkdir -p "$ERP_HOME"
