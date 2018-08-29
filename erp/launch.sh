@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -o errexit
-./setup-erp-db.sh
-./start.sh 
+sh ./setup-erp-db.sh
+sh ./start.sh 

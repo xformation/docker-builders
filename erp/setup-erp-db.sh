@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo "******CREATING ERP DATABASES******"
 PGPASSWORD=postgres psql -h ${DB_HOST} -p 5432 --username postgres <<- EOSQL
    CREATE USER ofbiz WITH PASSWORD 'ofbiz';
