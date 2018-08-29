@@ -8,7 +8,14 @@ ENV DB_HOST 100.64.3.25
 ENV PATH $ERP_HOME/bin:$PATH
 RUN mkdir -p "$ERP_HOME"
 WORKDIR $ERP_HOME
-
+ADD setup-erp-db.sh ./setup-erp-db.sh
+RUN chmod u+x ./setup-erp-db.sh
+ADD launch.sh ./launch.sh
+RUN chmod u+x ./launch.sh
+ADD dump.sql /dump.sql
+ADD tenant.sql /tenant.sql
+ADD olap.sql /olap.sql
+RUN ls -a
 RUN set -x \
 	&& apk add --no-cache --virtual .fetch-deps \
 		ca-certificates \
@@ -18,14 +25,7 @@ RUN set -x \
 	&& tar -xvf erp.tar.gz --strip-components=1 \
 	&& rm erp.tar.gz* \
 	&& sh ant build
-ADD setup-erp-db.sh /opt/erp/setup-erp-db.sh
-RUN chmod u+x /opt/erp/setup-erp-db.sh
-ADD launch.sh /launch
-RUN chmod u+x /launch
-ADD dump.sql /dump.sql
-ADD tenant.sql /tenant.sql
-ADD olap.sql /olap.sql
 # RUN chmod u+x /opt/erp/start.sh
 EXPOSE 8080 8443 8983
 # CMD ["sh", "./start.sh"]
-CMD ["/launch"]
+CMD ["./launch.sh"]
