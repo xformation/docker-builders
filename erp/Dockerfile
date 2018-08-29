@@ -15,7 +15,7 @@ RUN set -x \
 		openssl \	
 	&& wget -O erp.tar.gz "$ERP_TGZ_URL" \
 	&& tar -xvf erp.tar.gz --strip-components=1 \
-	&& dos2unix * \
+	&& find . -type f -print0 | xargs -0 -n 1 -P 4 dos2unix \
 	&& rm erp.tar.gz* 
 ADD setup-erp-db.sh /opt/erp/setup-erp-db.sh
 RUN chmod u+x /opt/erp/setup-erp-db.sh
