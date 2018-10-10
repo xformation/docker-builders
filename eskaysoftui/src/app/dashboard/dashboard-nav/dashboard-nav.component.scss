@@ -1,0 +1,13 @@
+.dashboard-navbar {
+  background-color: #f8f8f8;
+  width: 100%;
+  margin-top: -10px;
+  padding: 10px 15px;
+}
+
+.btn, .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+  background: none;
+  border: none;
+  color: #666;
+  box-shadow: none;
+}

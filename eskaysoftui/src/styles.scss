@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("assets/images/Body-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 60px;
+  overflow-y: auto;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.line {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid grey;
+}
+
+.input-group {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.open > .dropdown-menu {
+  margin-top: -2px;
+}
+
+.input-group {
+  .caret {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    z-index: 10;
+  }
+}
+
+.ag-theme-balham {
+  background-color: rgba(250, 250, 250, 0.7);
+
+  .ag-row {
+    background-color: transparent;
+  }
+
+  .ag-header-cell {
+    background-color: #e1f3f3;
+    font-weight: bold;
+    font-size: 13px;
+
+    .ag-header-cell-menu-button {
+      opacity: 1 !important;
+    }
+  }
+
+  .ag-cell-focus {
+    border: none !important;
+    border-right: 1px solid #ccc !important;
+  }
+
+  .ag-row-selected {
+    background-color: #cbd7f1 !important;
+  }
+
+  .ag-cell {
+    border-right: 1px solid #ccc;
+    // text-align: center;
+    img {
+      width: 15px;
+      margin-left: 40%;
+    }
+  }
+
+  .ag-paging-panel {
+    color: #333;
+
+    .ag-paging-button {
+      opacity: 1;
+    }
+  }
+}
+
+.mr-l-10 {
+  margin-left: 10px;
+}
+
+//appcomponent
+
+.wrapper{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}

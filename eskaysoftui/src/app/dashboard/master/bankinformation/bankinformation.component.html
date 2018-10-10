@@ -1,0 +1,43 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-5">
+      <h3>Bank Information</h3>
+      <form [formGroup]="bankInformationForm" (ngSubmit)="save()" autocomplete="off">
+        <div class="row">
+          <div class="error-text col-xs-12" *ngIf="formSuccess">
+            <p class="text-success">{{'message.save' | translate }}</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="formRequiredError">
+            <p class="text-danger">{{'message.mandatory' | translate }}</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="formServerError">
+            <p class="text-danger">{{'message.error' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <p>Bank Name: *</p>
+          <input id="name" #focus [readonly]="nameFlag"  class="form-control" [formControl]="bankInformationForm.controls['name']">
+          </div>
+          <div class="input-group">
+            <p>Bank Address: *</p>
+            <input id="address" class="form-control" [formControl]="bankInformationForm.controls['address']">
+          </div>
+
+            <div class="input-group">
+              <button type="button" (click)="resetForm()" class="btn btn-primary">{{'button.reset' | translate }}</button>
+              <button type="submit" class="btn btn-primary mr-l-10">{{'button.save' | translate }}</button>
+              <button type="button" [disabled]="deleteFlag" (click)="delete()" class="btn btn-danger float-right">{{'button.delete' | translate }}</button>
+            </div>
+      </form>
+    </div>
+
+    <div class="col-md-7">
+      <br /><br />
+
+      <app-synectiks-common-grid [gridDataList]="gridDataList" (valueChange)='valueChange($event)' [gridColumnList]="gridColumnNamesList"></app-synectiks-common-grid>
+    </div>
+
+  </div>
+
+</div>

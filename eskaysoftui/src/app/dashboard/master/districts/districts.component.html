@@ -1,0 +1,93 @@
+<div class="col-md-12">
+    <div class="row">
+      <div class="col-md-5">
+        <h3>Districts</h3>
+        <form [formGroup]="districtsForm" (ngSubmit)="save()" autocomplete="off">
+          <div class="row">
+            <div class="error-text col-xs-12" *ngIf="formSuccess">
+              <p class="text-success">{{'message.save' | translate }}</p>
+            </div>
+            <div class="error-text col-xs-12" *ngIf="formRequiredError">
+              <p class="text-danger">{{'message.mandatory' | translate }}</p>
+            </div>
+            <div class="error-text col-xs-12" *ngIf="formServerError">
+              <p class="text-danger">{{'message.error' | translate }}</p>
+            </div>
+            <div class="error-text col-xs-12" *ngIf="isduplicate">
+              <p class="text-danger">Duplicate Record Exists.</p>
+            </div>
+          </div>
+  
+          <div class="input-group">
+            <p>District Name: *</p>
+            <input id="districtName" #focus [readonly]="nameFlag"  class="form-control" [formControl]="districtsForm.controls['districtName']">
+          </div>
+            <div class="input-group">
+              <p>State Name: * &emsp; (<a style="cursor: pointer" (click)="openModal(template)">create new</a>)</p>
+              <input id="stateName" formControlName="statesName" [typeahead]="statesList" typeaheadOptionField="stateName"
+                [typeaheadOptionsLimit]="7" [typeaheadMinLength]="0" (typeaheadOnSelect)="onSelectState($event)" class="form-control">
+                <span class="caret"></span>
+          </div>
+            
+              <div class="input-group">
+                <button type="button" (click)="resetForm()" class="btn btn-primary">{{'button.reset' | translate }}</button>
+                <button type="submit" class="btn btn-primary mr-l-10">{{'button.save' | translate }}</button>
+                <button type="button" [disabled]="deleteFlag" (click)="delete()" class="btn btn-danger float-right">{{'button.delete' | translate }}</button>
+              </div>
+        </form>
+      </div>
+  
+      <div class="col-md-7">
+        <br /><br />
+  
+        <app-synectiks-common-grid [gridDataList]="districtsList" (valueChange)='valueChange($event)' [gridColumnList]="districtsColumns"></app-synectiks-common-grid>
+      </div>
+  
+    </div>
+  
+  </div>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Create State</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="statesForm" (ngSubmit)="saveState()" autocomplete="off">
+        <div class="row">
+          <div class="error-text col-xs-12" *ngIf="scFormRequiredError">
+            <p class="text-danger">All fields are mandatory!!</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="scFormServerError">
+            <p class="text-danger">Could not save. Try again later!!</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="isStateduplicate">
+            <p class="text-danger">Duplicate Recod Exits.</p>
+          </div>
+        </div>
+  
+        <div class="input-group">
+          <p>State Name: *</p>
+          <input id="stateName" class="form-control" [formControl]="statesForm.controls['stateName']">
+      </div>
+      <div class="input-group">
+          <p>Code: *</p>
+          <input id="stateCode" class="form-control" [formControl]="statesForm.controls['stateCode']">
+        </div>
+        <div class="input-group">
+            <p>Zone: *</p>
+            <input id="zone"  class="form-control" [formControl]="statesForm.controls['zone']">
+          </div>
+  
+            <div class="input-group">
+              <button type="button" (click)="resetStatesForm()" class="btn btn-primary">Reset</button>
+              <button type="submit" class="btn btn-primary mr-l-10">Save</button>
+            </div>
+  
+      </form>
+      
+    </div>
+  </ng-template>
+  

@@ -1,0 +1,24 @@
+<header>
+  <span>
+  <img src="/src/assets/images/logo.png" alt="eskaysoft-logo">
+</span>
+<div style="float: right;padding:0em; " *ngIf="isLogin()">
+<span style="float: right;padding:1em; ">
+        <a class="text-right" href="#" [routerLink]="['/auth']"><span class="glyphicon glyphicon-log-in"></span> Log Out</a>
+</span>
+<span style="float: right;padding:1em; ">
+    <a class="text-right" href="#"></a>
+    <div class="btn-group" dropdown #dropdown1="bs-dropdown" [autoClose]="false">
+      <button id="buttonMaster" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic"  (mouseenter) ="dropdown1.isOpen=true"  (mouseleave) ="dropdown1.isOpen=false">
+        <span class="glyphicon glyphicon-cog"></span>Settings
+      </button>
+      <ul id="dropdownMaster" (mouseenter) ="dropdown1.isOpen=true"  (mouseleave) ="dropdown1.isOpen=false" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['admin/userProfile']">User Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['']">Create User</a></li>
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['']">Update User</a></li>
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['']">Change Password</a></li>                            
+      </ul>
+    </div>
+</span>
+</div>
+</header>

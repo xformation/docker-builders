@@ -1,0 +1,93 @@
+<div class="col-md-12">
+    <div class="row">
+      <div class="col-md-5">
+        <h3>Areas</h3>
+        <form [formGroup]="areaForm" (ngSubmit)="save()" autocomplete="off">
+          <div class="row">
+            <div class="error-text col-xs-12" *ngIf="formSuccess">
+              <p class="text-success">{{'message.save' | translate }}</p>
+            </div>
+            <div class="error-text col-xs-12" *ngIf="formRequiredError">
+              <p class="text-danger">{{'message.mandatory' | translate }}</p>
+            </div>
+            <div class="error-text col-xs-12" *ngIf="formServerError">
+              <p class="text-danger">{{'message.error' | translate }}</p>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <p>Area Name: *</p>
+            <input id="areaName" #focus [readonly]="nameFlag"  class="form-control" [formControl]="areaForm.controls['areaName']">
+          </div>
+
+          <div class="input-group">
+            <p>Executive Name: * &emsp; (<a style="cursor: pointer" (click)="openModal(template)">create new</a>)</p>
+            <input id="businessExecutiveId" formControlName="businessExecutiveName" [typeahead]="typeaheadDataList" typeaheadOptionField="name"
+              [typeaheadOptionsLimit]="7"   [typeaheadMinLength]="0" (typeaheadOnSelect)="loadSelectedTypeahead($event)" class="form-control">
+              <span class="caret"></span>
+        </div>
+
+              <div class="input-group">
+                <button type="button" (click)="resetForm()" class="btn btn-primary">{{'button.reset' | translate }}</button>
+                <button type="submit" class="btn btn-primary mr-l-10">{{'button.save' | translate }}</button>
+                <button type="button" [disabled]="deleteFlag" (click)="delete()" class="btn btn-danger float-right">{{'button.delete' | translate }}</button>
+              </div>
+        </form>
+      </div>
+
+      <div class="col-md-7">
+        <br /><br />
+        <app-synectiks-common-grid [gridDataList]="gridDataList" (valueChange)='valueChange($event)' [gridColumnList]="gridColumnNamesList"></app-synectiks-common-grid>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Create Business Executive</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="businessExecutiveForm" (ngSubmit)="saveBusinessExecutive()" autocomplete="off">
+
+        <div class="row">
+          <div class="error-text col-xs-12" *ngIf="formSuccess">
+            <p class="text-success">{{'message.save' | translate }}</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="formRequiredError">
+            <p class="text-danger">{{'message.mandatory' | translate }}</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="formServerError">
+            <p class="text-danger">{{'message.error' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="input-group">
+        	<p>Name: *</p>
+        	<input id="name" class="form-control" [formControl]="businessExecutiveForm.controls['name']">
+        </div>
+
+        <div class="input-group">
+        	<p>Address: *</p>
+        	<input id="address" class="form-control" [formControl]="businessExecutiveForm.controls['address']">
+        </div>
+
+        <div class="input-group">
+        	<p>Town: *</p>
+        	<input id="town" class="form-control" [formControl]="businessExecutiveForm.controls['town']">
+        </div>
+
+        <div class="input-group">
+        	<p>Mobile: *</p>
+        	<input id="mobile" class="form-control" [formControl]="businessExecutiveForm.controls['mobile']">
+        </div>
+
+        <div class="input-group">
+        	<button type="button" (click)="resetBusinessExecutiveForm()" class="btn btn-primary">Reset</button>
+        	<button type="submit" class="btn btn-primary mr-l-10">Save</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>

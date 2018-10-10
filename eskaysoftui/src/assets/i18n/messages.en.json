@@ -1,0 +1,40 @@
+{
+  "schedule": {
+    "title": "Schedule",
+    "name": "Schedule Name",
+    "index": "﻿Schedule Index",
+    "type": "﻿Schedule Type",
+    "status": "﻿Status",
+    "saveConfirmationMessage": "Are you sure you want to save Schedule?",
+    "deleteConfirmationMessage" : "Are you sure you want to delete Schedule?",
+    "saveInformationMessage": "Schedule record has been saved successfully.",
+    "deleteInformationMessage": "Schedule record has been deleted successfully.",
+    "duplicateErrorMessage":"The Schedule Name & Schedule Index already exists.",
+    "duplicateNameErrorMessage":"The Schedule Name '{{duplicateMessageParam}}' already exists with this name.",
+    "duplicateIndexErrorMessage":"The Schedule Index '{{duplicateMessageParam}}' already exists with this number.",
+    "paramexample": "The Schedule Index  {{name}}!"
+  },
+  "subschedule": {
+    "saveConfirmationMessage": "Are you sure you want to save Sub-Schedule?",
+    "deleteConfirmationMessage" : "Are you sure you want to delete Sub-Schedule?",
+    "saveInformationMessage": "Sub-Schedule record has been saved successfully.",
+    "deleteInformationMessage": "Sub-Schedule record has been deleted successfully.",
+    "duplicateNameErrorMessage":"The Sub-Schedule Name '{{duplicateMessageParam}}' already exists with this name."
+  },
+  "states": {
+    "saveConfirmationMessage": "Are you sure you want to save State?",
+    "deleteConfirmationMessage" : "Are you sure you want to delete State?",
+    "saveInformationMessage": "State record has been saved successfully.",
+    "deleteInformationMessage": "State record has been deleted successfully."
+  },
+  "button": {
+    "save": "Save",
+    "reset": "Reset",
+    "delete": "﻿Delete"
+  },
+  "message": {
+    "save": "Saved successfully!",
+    "mandatory": "All fields are mandatory!!",
+    "error": "Could not save. Try again later!!"
+  }
+}

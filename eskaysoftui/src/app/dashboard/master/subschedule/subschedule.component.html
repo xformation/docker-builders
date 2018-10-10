@@ -1,0 +1,111 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-5">
+      <h3>Sub-schedule</h3>
+      <form [formGroup]="subScheduleForm" (ngSubmit)="save()" autocomplete="off">
+        <div class="row">
+          <div class="error-text col-xs-12" *ngIf="formSuccess">
+            <p class="text-success">Saved successfully!</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="formRequiredError">
+            <p class="text-danger">All fields are mandatory!!</p>
+          </div>
+          <div class="error-text col-xs-12" *ngIf="formServerError">
+            <p class="text-danger">Could not save. Try again later!!</p>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <p>Sub-schedule Name: *</p>
+          <input #focus id="subScheduleName" [readonly]="nameFlag" class="form-control" [formControl]="subScheduleForm.controls['subScheduleName']">
+        </div>
+          <div class="input-group">
+            <p>Schedule Name: * &emsp; (<a style="cursor: pointer" (click)="openModal(template)">create new</a>)</p>
+
+
+            <!-- <select [formControl]="subScheduleForm.controls['scheduleId']" class="form-control">
+            <option *ngFor="let item of scheduleList" [value]="item.id">{{item.scheduleName}}</option>
+          </select> -->
+
+            <input id="scheduleType" formControlName="scheduleName" [typeahead]="scheduleList" typeaheadOptionField="scheduleName"
+            [typeaheadOptionsLimit]="7" [typeaheadMinLength]="0" (typeaheadOnSelect)="onSelectSchedule($event)" class="form-control">
+            <span class="caret"></span>
+
+          </div>
+          <div class="input-group">
+            <p>Sub-schedule Index: * </p>
+            <input id="subScheduleIndex"  [readonly]="true" class="form-control" [formControl]="subScheduleForm.controls['subScheduleIndex']">
+        </div>
+
+            <div class="input-group">
+              <button type="button" (click)="resetForm()" class="btn btn-primary">Reset</button>
+              <button type="submit" class="btn btn-primary mr-l-10">Save</button>
+              <button type="button" [disabled]="deleteFlag" (click)="showConfirmationModal('Delete')" class="btn btn-danger float-right">Delete</button>
+            </div>
+
+      </form>
+    </div>
+    <div class="col-md-7">
+      <br /><br />
+
+      <!--  <ag-grid-angular #agGrid style="height: 400px; width: 100%;" class="ag-theme-balham" [rowData]="subScheduleList"
+        [columnDefs]="subScheduleListColumns" [rowSelection]="rowSelection" (gridReady)="onGridReady($event)"
+        [navigateToNextCell]="navigateToNextCell" (selectionChanged)="onSelectionChanged($event)"
+        [paginationAutoPageSize]="true" [pagination]="true" [enableFilter]="true" [enableSorting]="true" >
+      </ag-grid-angular>-->
+
+      <app-synectiks-common-grid [gridDataList]="subScheduleList" (valueChange)='valueChange($event)'
+       [gridColumnList]="subScheduleListColumns"></app-synectiks-common-grid>
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Create Schedule</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="scheduleForm" (ngSubmit)="saveSchedule()" autocomplete="off">
+      <div class="row">
+        <div class="error-text col-xs-12" *ngIf="scFormRequiredError">
+          <p class="text-danger">All fields are mandatory!!</p>
+        </div>
+        <div class="error-text col-xs-12" *ngIf="duplicateMessage != null">
+          <p class="text-danger" [textContent]="duplicateMessage" [translate]="duplicateMessage" [translateParams]="{duplicateMessageParam: duplicateMessageParam}"></p>
+        </div>
+        <div class="error-text col-xs-12" *ngIf="scFormServerError">
+          <p class="text-danger">Could not save. Try again later!!</p>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <p>Schedule Name: *</p>
+        <input id="scheduleName" class="form-control" (blur)="checkForDuplicateScheduleName()" [formControl]="scheduleForm.controls['scheduleName']">
+      </div>
+        <div class="input-group">
+          <p>Schedule Index: *</p>
+          <input id="scheduleIndex" class="form-control" (blur)="validateFormOnBlur()" [formControl]="scheduleForm.controls['scheduleIndex']">
+      </div>
+          <div class="input-group">
+            <p>Schedule Type: </p>
+            <input id="scheduleType" formControlName="scheduleType" [typeahead]="scheduleTypes" typeaheadOptionField="code"
+          [typeaheadOptionsLimit]="7" [typeaheadMinLength]="0" class="form-control">
+            <span class="caret"></span>
+          </div>
+
+          <div class="input-group">
+            <button type="button" (click)="resetScheduleForm()" class="btn btn-primary">Reset</button>
+            <button type="submit" class="btn btn-primary mr-l-10">Save</button>
+          </div>
+
+    </form>
+    <!-- <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button> -->
+  </div>
+</ng-template>

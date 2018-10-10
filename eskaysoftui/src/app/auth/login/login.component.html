@@ -1,0 +1,58 @@
+<header></header>
+<div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 col-xs-12 card">
+  <div class="row">
+    <div class="col-xs-12 header">
+      <div class="col-xs-6">
+        <div class="row">
+          <p class="pointer">Sign In</p>
+        </div>
+      </div>
+      <div class="col-xs-6 text-right">
+        <div class="row">
+          <p class="pointer">Forgot Password?</p>
+        </div>
+      </div>
+    </div> <!-- header -->
+    <div class="col-xs-12 card-body">
+      <div class="col-xs-12">
+        <div class="row">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="error-text col-xs-12" *ngIf="badCredentials">
+              <p class="text-danger">Invalid Username or Password!!</p>
+            </div>
+            <div class="error-text col-xs-12" *ngIf="formError">
+              <p class="text-danger">Username and Password is mandatory!</p>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="usernameOrEmail" class="form-control" [formControl]="loginForm.controls['usernameOrEmail']"
+                placeholder="Username or Email">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control" [formControl]="loginForm.controls['password']"
+                placeholder="Password">
+            </div>
+
+
+            <div class="checkbox">
+              <label><input type="checkbox"> Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-success">Login</button>
+          </form>
+        </div>
+        <div class="row line"></div>
+        <div class="row">
+          <div class="col-xs-12 card-footer">
+            <div class="row">
+              <p>
+                Don't have an Account! <span><a [routerLink]="['signup']" >Sign Up Here</a></span>
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- card-body -->
+  </div>
+</div>

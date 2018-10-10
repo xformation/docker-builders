@@ -1,0 +1,69 @@
+{
+  "ScheduleTypes": [
+    { "code": "ASS", "description": "Assets" },
+    { "code": "LIA", "description": "Liabilities" },
+    { "code": "TRADE", "description": "Trading" },
+    { "code": "PNL", "description": "Profit & Loss" }
+  ],
+  "ScheduleListColumns": [
+    { "headerName": "Schedule Name", "field": "scheduleName" },
+    { "headerName": "Schedule Index", "field": "scheduleIndex", "filter": "agNumberColumnFilter", "width": 100 },
+    { "headerName": "Schedule Type", "field": "scheduleType", "width": 100 },
+    { "headerName": "Status", "field": "deleteFlag", "cellRenderer": "deltaIndicator", "suppressFilter": true, "width": 50 }
+  ],
+  "SubScheduleListColumns": [
+    { "headerName": "Sub-Schedule Name", "field": "subScheduleName" },
+    { "headerName": "Schedule Name", "field": "scheduleName", "filter": "agNumberColumnFilter",  "width": 80 },
+    { "headerName": "Sub-Schedule Index", "field": "subScheduleIndex", "filter": "agNumberColumnFilter",  "width": 100 }
+  ],
+  "StateListColumns": [
+    { "headerName": "State Name", "field": "stateName" },
+    { "headerName": "State Code", "field": "stateCode", "filter": "agNumberColumnFilter",  "width": 60 },
+    { "headerName": "Zone", "field": "zone",  "width": 70 },
+    { "headerName": "Status", "field": "deleteFlag", "cellRenderer": "deltaIndicator", "suppressFilter": true, "width": 50 }
+  ],
+  "DistrictsColumns": [
+    { "headerName": "District Name", "field": "districtName" },
+    { "headerName": "State Name", "field": "statesName" }
+  ],
+  "BusinessExecutiveColumns": [
+    { "headerName": "Name", "field": "name" },
+    { "headerName": "Address", "field": "address" },
+    { "headerName": "Town", "field": "town" },
+    { "headerName": "Mobile", "field": "mobile" },
+    { "headerName": "Status", "field": "deleteFlag", "cellRenderer": "deltaIndicator", "suppressFilter": true, "width": 50 }
+  ],
+  "BankInformationColumns": [
+    { "headerName": "Name", "field": "name" },
+    { "headerName": "Address", "field": "address" }
+  ],
+  "ManfacturerColumns": [
+    { "headerName": "Manfacturer Name", "field": "manfacturerName" }
+  ],
+  "CompanyGroupColumns": [
+    { "headerName": "Company Group", "field": "companyGroup" },
+    { "headerName": "Status", "field": "deleteFlag", "cellRenderer": "deltaIndicator", "suppressFilter": true, "width": 50 }
+  ],
+  "AreaColumns": [
+    { "headerName": "Area Name", "field": "areaName" },
+    { "headerName": "Executive Name", "field": "name" }
+  ],
+  "CompanyColumns": [
+    { "headerName": "Company Group", "field": "companyGroup" }
+  ],
+  "CustomerDiscountColumns": [
+    { "headerName": "Company Description", "field": "company" },
+    { "headerName": "Discount", "field": "discount" },
+    { "headerName": "C.Discount", "field": "cdisc" }
+  ],
+  "ProductColumns": [
+    { "headerName": "Product Name", "field": "productName" }
+  ],
+  "ProductCategoryColumns": [
+    { "headerName": "Product Category", "field": "productCategory" }
+  ],
+  "ProductGroupColumns": [
+    { "headerName": "Product Group", "field": "productGroup" }
+  ]
+
+}

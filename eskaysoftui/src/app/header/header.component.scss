@@ -1,0 +1,17 @@
+header{
+    position: fixed;
+    top: 0; left: 0;
+    background-color: #cedbcf;
+    height: 50px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 100;
+}
+
+.btn, .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    background: none;
+    border: none;
+    color: #337ab7;
+    box-shadow: none;
+  }
