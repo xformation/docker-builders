@@ -5,6 +5,6 @@ ENV ESKAYSOFT_PATHS_HOME="/usr/share/nginx/html"
 COPY nginx/default.conf /etc/nginx/conf.d/
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
-## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
+## copy eskaysoft build to default nginx public folder
 RUN curl "$ESKAYSOFT_URL" | tar xfvz - --strip-components=1 -C "$ESKAYSOFT_PATHS_HOME"
 CMD ["nginx", "-g", "daemon off;"]
