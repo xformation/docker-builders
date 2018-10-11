@@ -1,17 +1,10 @@
-FROM node:8-alpine as builder
-COPY package.json package-lock.json ./
-RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
-## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
-WORKDIR /ng-app
-COPY . .
-## Build the angular app in production mode and store the artifacts in dist folder
-RUN $(npm bin)/ng build
 FROM nginx:1.13.3-alpine
+ARG ESKAYSOFT_URL="https://s3.amazonaws.com/eskaysoft-releases/eskaysoft-latest.tar.gz"
+ENV ESKAYSOFT_PATHS_HOME="/usr/share/nginx/html"
 ## Copy our default nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
-ADD dist/eskaysoft/ /usr/share/nginx/html
+RUN curl "$ESKAYSOFT_URL" | tar xfvz - --strip-components=1 -C "$ESKAYSOFT_PATHS_HOME"
 CMD ["nginx", "-g", "daemon off;"]
