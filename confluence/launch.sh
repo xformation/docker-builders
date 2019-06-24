@@ -1,6 +1,6 @@
 #!/bin/bash
 set -o errexit
-/opt/confluence/setup-confluence-db.sh
+/setup-confluence-db.sh
 cat <<END > /opt/confluence-home/confluence.cfg.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <confluence-configuration>
