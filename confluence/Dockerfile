@@ -25,6 +25,8 @@ RUN chmod u+x /opt/confluence/setup-confluence-db.sh
 ADD launch.sh /launch
 RUN chmod u+x /launch
 ADD data.sql /data.sql
+RUN adduser -D confluence
+USER confluence
 WORKDIR /opt/confluence
 VOLUME ["/opt/confluence-home"]
 EXPOSE 8090
