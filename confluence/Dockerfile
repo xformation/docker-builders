@@ -25,7 +25,12 @@ RUN chmod u+x /opt/confluence/setup-confluence-db.sh
 ADD launch.sh /launch
 RUN chmod u+x /launch
 ADD data.sql /data.sql
-RUN adduser -D confluence
+RUN useradd -ms /bin/bash  confluence
+RUN usermod -a -G confluence  confluence
+RUN chown confluence:confluence /setup-confluence-db.sh
+RUN chown confluence:confluence /launch
+RUN chown  -R confluence:confluence /opt/confluence
+RUN chown  -R confluence:confluence /opt/confluence-home
 USER confluence
 WORKDIR /opt/confluence
 VOLUME ["/opt/confluence-home"]
